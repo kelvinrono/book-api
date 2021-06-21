@@ -3,7 +3,7 @@ from app.models import User
 from flask_script import Manager,Server
 from app.models import User, Role
 from  flask_migrate import Migrate, MigrateCommand
-from app.models import User,Role,Review
+from app.models import User,Role
 # Creating app instance
 app = create_app('development')
 
@@ -26,5 +26,5 @@ migrate = Migrate(app,db)
 manager.add_command('db',MigrateCommand) 
 
 if __name__ == '__main__':
-    manager.run(  app.run(host='localhost', port=8000))
+    manager.run()
 
