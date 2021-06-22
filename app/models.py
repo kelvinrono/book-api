@@ -49,6 +49,13 @@ class Role(db.Model):
     def __repr__(self):
         return f'User {self.name}'
 
+class Book(db.Model):
+    '''
+    Book class to define book objects.
+    '''
+    def __init__(self,title,author,description,book_image,published_date,book_review_link):
+
+
 
 
 
