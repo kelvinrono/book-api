@@ -12,7 +12,7 @@ def search_book(book_name):
     search_book_url = 'http://api.book.com/3/search/book?api_key{}&query={}'.format(api_key, book_name)
     with urllib.request.urlopen(search_book_url) as url:
         search_book_data = url.read()
-        search_m_response = json.loads(search_book_data)
+        search_book_response = json.loads(search_book_data)
 
         search_book_results = None
 

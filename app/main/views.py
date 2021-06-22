@@ -10,15 +10,15 @@ def index():
     View root page function that returns the index page and its data
     '''
     # Getting popular movie
-    fiction_books= get_books('fiction')
-    horror_books = get_books('horror')
+    popular_books= get_books('popular')
+    upcoming_books = get_books('upcoming')
     recent_published_books = get_books('recent_published')
     title = 'Home - Welcome to The best Book Review Website Online'
     search_book = request.args.get('book_query')
     if search_book:
-        return redirect(url_for('.search',book_name =search_book))
+        return redirect(url_for('.search',book_name = search_book))
     else:
-        return render_template('index.html', title = title,fiction = fiction_books, horror= horror_books, recent_published = recent_published_books )
+        return render_template('index.html', title = title,popular_books = popular_books, upcoming_books= upcoming_books, recent_published = recent_published_books )
 
 @main.route('/search/<book_name>')
 def search(book_name):
