@@ -53,13 +53,13 @@ class Book(db.Model):
     '''
     Book class to define book objects.
     '''
-    def __init__(self,title,author,description,book_image,published_date,book_review_link):
+    def __init__(self,title,author,description,book_image,published_date,):
         self.title = title
         self.author = author
         self.description = description
         self.book_image ="https://storage.googleapis.com/du-prd/books/images/" + book_image
         self.published_date =published_date 
-        self.book_review_link = book_review_link
+        
         
 
 
