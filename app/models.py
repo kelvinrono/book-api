@@ -72,5 +72,17 @@ class Comment(db.Model):
 
 
 
+class Book:
+    '''
+    Movie class to define Movie Objects
+    '''
+
+    def __init__(self,author,title,description,book_image,amazon_product_url):
+        self.author = author
+        self.title, = title,
+        self.description = description
+        self.book_image = book_image
+        self.amazon_product_url = amazon_product_url
+
 
  
