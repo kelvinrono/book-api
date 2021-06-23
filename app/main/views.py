@@ -3,7 +3,7 @@ from flask import render_template,request,redirect,url_for
 from flask import render_template
 from ..requests import get_books
 from . import main
-from ..requests import get_books,get_book,search_book
+from ..requests import get_books
 
 
 # Views
