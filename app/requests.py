@@ -1,6 +1,7 @@
 import urllib.request,json
 from .models import Book
 
+
 api_key = None
 base_url = None
 
@@ -46,3 +47,4 @@ def process_results(book_list):
         book_results.append(book_object)
 
     return book_results
+
