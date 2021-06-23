@@ -1,0 +1,15 @@
+{% extends 'base.html'%}
+
+{% block content %}
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="clm-sm-4">
+            <img src="{{review.image path}}" class="img-responsive" alt="">
+        </div>
+        <div class="col-sm-8">
+            {{format_review|safe}}
+        </div>
+    </div>
+</div>
+{% endblock %}
