@@ -9,8 +9,22 @@
 {% endblock %}
 
 <div class="container">
+    <form>
+        <input type="text" name="book_query" placeholder="Search for a Book" class="form-control">
+        <input type="submit"  value="Submit" class="btn btn-default">
+    </form>
     
-<h1>This is the home page</h1>
+
+    {%  for current_books in current  %}
+
+   <div>{{current_books.title}}</div> 
+   <div>{{current_books.author}}</div>    
+   <div><img src="{{current_books.book_image}}"></div> 
+   <div>{{current_books.description}}</div> 
+   <div><a href="{{current_books.amazon_product_url}}">Amazon url</a></div> 
+
+    {%endfor %}
+
 </div>
 
 {% endblock%}
