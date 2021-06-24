@@ -33,7 +33,7 @@ def get_books(time):
     return book_results
 
 def search_book(book_name):
-    search_book_urI= "https://www.amazon.com/dp/0316540714?tag=NYTBSREV-20".format(api_key,book_name)
+    search_book_urI= "https://api.nytimes.com/svc/search/v2/articlesearch.json?q={}&api-key=Zop3cRQVphiHQpxla6ZQZC82SF5MVobo".format(api_key,book_name)
     with urllib.request.urlopen(search_book_urI) as urI:
         search_book_data = urI.read()
         search_book_response = json.loads(search_book_data)
