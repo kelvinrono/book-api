@@ -1,0 +1,49 @@
+{% extends 'base.html'%}
+
+
+<!-- Styles block -->
+
+{% block styles%}
+    {{ super() }}
+    <link rel="stylesheet" href="{{url_for('static',filename='css/Books.css')}}">
+{% endblock %}
+
+<!-- Content block -->
+{% block content %}
+<div class="container">
+
+    <!-- Poster background -->
+    <div class="row">
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 posterPath" style="background: url({{book.poster}}) no-repeat center center">
+        </div>
+
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 book-details">
+            <h3>{{ book.title }}</h3>
+
+            <p class="overview"> {{ book.overview }}</p>
+
+            <p class="ratings"> <b> {{ book.vote_average }}</b> - <i>{{ book.vote_count}} votes </i> </p>
+            <a class="ratings" href="/book/review/new/{{book.id}}"> Write a new review</a>
+
+        </div>
+
+
+    </div>
+    
+    <div class="row">
+
+        <h1>Reviews</h1>
+        <hr>
+
+        {% if reviews %}
+
+        {% else%}
+            <h3 class="text-center">This book has no reviews </h3>
+
+            <a class="btn btn-success btn-lg text-center" href="/book/review/new/{{book.id}}"> Write a new review</a>
+        {% endif %}
+
+    </div>
+
+</div>
+{% endblock %}

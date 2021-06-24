@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 from flask import render_template,request,redirect,url_for
 from flask import render_template
 from ..requests import get_books
@@ -8,8 +7,6 @@ import markdown2
 from flask_login import login_required, current_user
 from . import main
 from ..requests import get_books,search_book
-
-=======
 from flask import render_template,request,redirect,url_for,abort
 from ..requests import get_books
 from . import main
@@ -18,7 +15,7 @@ from .forms import UpdateProfile
 from .. import db
 from flask_login import login_required, current_user
 # from flask_login import login_required
->>>>>>> c53debbc4d04ce128ef7cfa2543841917b3687ef
+
 
 
 # Views
@@ -33,7 +30,6 @@ def index():
 
     return render_template('index.html', current=current_books)
 
-<<<<<<< HEAD
 @main.route('/book/review/new/<int:id>' , methods = ['GET','POST'])
 @login_required
 def new_review(id):
@@ -71,9 +67,6 @@ def search(book_name):
     return render_template('search.html',books = searched_books)    
 
 
-
-
-=======
 @main.route('/user/<uname>')
 def profile(uname):
     user = User.query.filter_by(username = uname).first()
@@ -101,4 +94,14 @@ def update_profile(uname):
         return redirect(url_for('.profile',uname=user.username))
 
     return render_template('profile/update.html',form =form)
->>>>>>> c53debbc4d04ce128ef7cfa2543841917b3687ef
+@main.route('/book/<int:id>')
+def book(id):
+
+    '''
+    View book page function that returns the book details page and its data
+    '''
+    book = get_book(id)
+    title = f'{book.title}'
+    reviews = Review.get_reviews(book.id)
+
+    return render_template('book.html',title = title,book = book,reviews = reviews)
