@@ -18,7 +18,7 @@ class User(UserMixin, db.Model):
     email=db.Column(db.String(255), unique=True, index = True)
     role_id = db.Column(db.Integer,db.ForeignKey('roles.id'))
     bio = db.Column(db.String(255))
-    profile_pic_path = db.Column(db.String())
+    # profile_pic_path = db.Column(db.String())
     password_hash = db.Column(db.String(255))
     pass_secure=db.Column(db.String(255))
     
@@ -87,8 +87,8 @@ class Book:
     '''
 
     def __init__(self,author,title,description,book_image,amazon_product_url):
-        self.author = author
         self.title, = title,
+        self.author = author
         self.description = description
         self.book_image = book_image
         self.amazon_product_url = amazon_product_url
