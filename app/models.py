@@ -68,27 +68,6 @@ class Comment(db.Model):
     def __repr__(self):
         return f'Comments: {self.comment}'
  
-
-class Book(db.Model):
-    '''
-    Book class to define book objects.
-    '''
-    def __init__(self,title,author,description,book_image,published_date,):
-        self.title = title
-        self.author = author
-        self.description = description
-        self.book_image ="https://storage.googleapis.com/du-prd/books/images/" + book_image
-        self.published_date =published_date 
-        
-        
-
-
-
-
-
-
-
-
 class Book:
     '''
     Movie class to define Movie Objects

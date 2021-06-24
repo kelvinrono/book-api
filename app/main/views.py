@@ -1,10 +1,10 @@
 from app.requests import get_books
 from flask import render_template,request,redirect,url_for,flash
 from . import main
-from .. import db,photos
+from .. import db
 from flask_login import login_user,logout_user,login_required,current_user
-from .form import BookForm,CommentForm,updateProfile,SubscriberForm
-from ..models import Book,Comment,User,Subscriber
+from .form import CommentForm
+from ..models import Book,Comment,User
 
 
 
