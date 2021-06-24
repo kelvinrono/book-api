@@ -1,11 +1,22 @@
+<<<<<<< HEAD
 # Created by https://www.toptal.com/developers/gitignore/api/flask,python
 # Edit at https://www.toptal.com/developers/gitignore?templates=flask,python
+=======
+
+# Created by https://www.toptal.com/developers/gitignore/api/flask
+# Edit at https://www.toptal.com/developers/gitignore?templates=flask
+>>>>>>> e46cb3a50e5c4cd2abd775b467f1f5df6cf96c4f
 
 ### Flask ###
 instance/*
 !instance/.gitignore
 .webassets-cache
+<<<<<<< HEAD
 .env
+=======
+.env/
+*.pyc
+>>>>>>> e46cb3a50e5c4cd2abd775b467f1f5df6cf96c4f
 
 ### Flask.Python Stack ###
 # Byte-compiled / optimized / DLL files
@@ -145,6 +156,7 @@ dmypy.json
 # Cython debug symbols
 cython_debug/
 
+<<<<<<< HEAD
 ### Python ###
 # Byte-compiled / optimized / DLL files
 
@@ -210,3 +222,6 @@ cython_debug/
 # Cython debug symbols
 
 # End of https://www.toptal.com/developers/gitignore/api/flask,python
+=======
+# End of https://www.toptal.com/developers/gitignore/api/flask
+>>>>>>> e46cb3a50e5c4cd2abd775b467f1f5df6cf96c4f

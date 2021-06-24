@@ -1,6 +1,7 @@
 import urllib.request,json
 from .models import Book
 
+
 api_key = None
 base_url = None
 
@@ -31,6 +32,21 @@ def get_books(time):
 
     return book_results
 
+def search_book(book_name):
+    search_book_urI= "https://www.amazon.com/dp/0316540714?tag=NYTBSREV-20".format(api_key,book_name)
+    with urllib.request.urlopen(search_book_urI) as urI:
+        search_book_data = urI.read()
+        search_book_response = json.loads(search_book_data)
+
+        search_book_results = None
+        
+        if search_book_response['results']:
+            search_book_list = search_book_response['results']['book']
+            search_book_results = process_results(search_book_list)
+
+
+    return search_book_results
+
 def process_results(book_list):
 
     book_results = []
@@ -46,3 +62,5 @@ def process_results(book_list):
         book_results.append(book_object)
 
     return book_results
+
+
