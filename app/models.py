@@ -49,6 +49,28 @@ class Role(db.Model):
     def __repr__(self):
         return f'User {self.name}'
 
+class Comment(db.Model):
+    __tablename__ = 'comments'
+    id = db.Column(db.Integer, primary_key=True)
+    comment = db.Column(db.String(255))
+    book_id = db.Column(db.Integer, db.ForeignKey('books.id',ondelete='CASCADE'))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id',ondelete='CASCADE'))
+    posted = db.Column(db.DateTime, default=datetime.utcnow)
+    def saveComment(self):
+        db.session.add(self)
+        db.session.commit()
+    @classmethod
+    def getComment(cls, book_id):
+        comments = Comment.query.filter_by(book_id=book_id).all()
+        return comments
+    def deleteComment(self):
+        db.session.delete(self)
+        db.session.commit()
+    def __repr__(self):
+        return f'Comments: {self.comment}'
+ 
+
+
 # class Book(db.Model):
 #     '''
 #     Book class to define book objects.
@@ -59,10 +81,34 @@ class Role(db.Model):
 #         self.description = description
 #         self.book_image ="https://storage.googleapis.com/du-prd/books/images/" + book_image
 #         self.published_date =published_date 
+<<<<<<< HEAD
 
 class Review(db.Model):
 
     __tablename__ = 'reviews'
+=======
+
+class Review(db.Model):
+
+    __tablename__ = 'reviews'
+
+    id = db.Column(db.Integer,primary_key = True)
+    book_id = db.Column(db.Integer)
+    book_title = db.Column(db.String)
+    image_path = db.Column(db.String)
+    book_review = db.Column(db.String)
+    posted = db.Column(db.DateTime,default=datetime.utcnow)
+    user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
+
+    def save_review(self):
+        db.session.add(self)
+        db.session.commit()
+
+    @classmethod
+    def get_reviews(cls,id):
+        reviews = Review.query.filter_by(book_id=id).all()
+        return reviews
+>>>>>>> 0dd6789d5bad9a3f9f075c9d5419b871ca134930
 
     id = db.Column(db.Integer,primary_key = True)
     book_id = db.Column(db.Integer)
