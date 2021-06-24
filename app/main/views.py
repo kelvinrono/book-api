@@ -1,20 +1,25 @@
-from flask import render_template,request,redirect,url_for
-from flask import render_template
-from ..requests import get_books
+
+
+from flask import render_template,request,redirect,url_for,flash,abort
 from . import main
-from .form import ReviewForm
-import markdown2
-from flask_login import login_required, current_user
-from . import main
-from ..requests import get_books,search_book
-from flask import render_template,request,redirect,url_for,abort
-from ..requests import get_books
-from . import main
-from ..models import User
-from .forms import UpdateProfile
 from .. import db
-from flask_login import login_required, current_user
+from flask_login import login_user,logout_user,login_required,current_user
+from .form import CommentForm,ReviewForm
+from ..models import Book,Comment,User
+
+
+
+from ..requests import get_books
+
+ 
+import markdown2
+
+
+from ..requests import get_books
+
+from .forms import UpdateProfile
 # from flask_login import login_required
+
 
 
 
@@ -29,6 +34,28 @@ def index():
 
 
     return render_template('index.html', current=current_books)
+
+
+@main.route('/comment/new/<int:id>', methods=['GET', 'POST'])
+@login_required
+def newComment(id):
+    book = Book.query.filter_by(id = id).all()
+    bookComments = Comment.query.filter_by(book_id=id).all()
+    comment_form = CommentForm()
+    if comment_form.validate_on_submit():
+        comment = comment_form.comment.data
+        new_comment = Comment(book_id=id, comment=comment, user=current_user)
+        new_comment.saveComment()
+    return render_template('newComment.html', book=book, book_comments=bookComments, comment_form=comment_form)
+ 
+@main.route('/delete/<int:id>', methods=['GET', 'POST'])
+@login_required
+def deleteComment(id):
+    comment =Comment.query.get_or_404(id)
+    db.session.delete(comment)
+    db.session.commit()
+    flash('comment succesfully deleted')
+    return redirect (url_for('main.allBooks'))
 
 @main.route('/book/review/new/<int:id>' , methods = ['GET','POST'])
 @login_required
@@ -103,5 +130,6 @@ def book(id):
     book = get_book(id)
     title = f'{book.title}'
     reviews = Review.get_reviews(book.id)
+
 
     return render_template('book.html',title = title,book = book,reviews = reviews)
