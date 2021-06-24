@@ -1,0 +1,27 @@
+{% extends 'base.html'%}
+{% import "bootsrtap/wtf.html" as wtf %}
+
+<!-- styles block -->
+{% block styles %} {{super()}}
+<link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}" />
+
+{% endblock %}
+{% block content %}
+
+<div class="container">
+    <div class="col-md-8">
+
+        <img src="{{book.poster}}" alt="{{book.title}}" class="img-responsive">
+        </div>
+        <div class="col-md-4">
+            {{ wtf.quick_form(review) }}
+        </div>
+
+</div>
+
+{%endblock%}
+
+<div class="col-md-4">
+    {{ wtf.quick_form(review_form) }}
+    {{simplemde.load}}
+</div>
