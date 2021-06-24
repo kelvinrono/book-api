@@ -59,7 +59,6 @@ class Role(db.Model):
 #         self.description = description
 #         self.book_image ="https://storage.googleapis.com/du-prd/books/images/" + book_image
 #         self.published_date =published_date 
-<<<<<<< HEAD
 
 class Review(db.Model):
 
@@ -81,18 +80,6 @@ class Review(db.Model):
     def get_reviews(cls,id):
         reviews = Review.query.filter_by(book_id=id).all()
         return reviews
-
-=======
->>>>>>> e46cb3a50e5c4cd2abd775b467f1f5df6cf96c4f
-        
-        
-
-
-
-
-
-
-
 
 class Book:
     '''

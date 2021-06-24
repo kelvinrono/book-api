@@ -1,15 +1,13 @@
 from flask import render_template,request,redirect,url_for
-<<<<<<< HEAD
 from flask import render_template
 from ..requests import get_books
 from . import main
 from .form import ReviewForm
 import markdown2
 from flask_login import login_required, current_user
-=======
 from . import main
 from ..requests import get_books,search_book
->>>>>>> e46cb3a50e5c4cd2abd775b467f1f5df6cf96c4f
+
 
 
 # Views
@@ -24,7 +22,6 @@ def index():
 
     return render_template('index.html', current=current_books)
 
-<<<<<<< HEAD
 @main.route('/book/review/new/<int:id>' , methods = ['GET','POST'])
 @login_required
 def new_review(id):
@@ -49,7 +46,7 @@ def single_review(id):
         about(404)
     format_review = markdown2.markdown(review.book_review,extras=["code-friendly","fenced-code-blocks"])
     return render_template('review.html',review = review,format_review=format_review)
-=======
+
 @main.route('/search/<book_name>')
 def search(book_name):
     '''
@@ -62,6 +59,5 @@ def search(book_name):
     return render_template('search.html',books = searched_books)    
 
 
->>>>>>> e46cb3a50e5c4cd2abd775b467f1f5df6cf96c4f
 
 
