@@ -71,7 +71,7 @@ class Role(db.Model):
 
 class Book:
     '''
-    Movie class to define Movie Objects
+    book class to define book Objects
     '''
 
     def __init__(self,author,title,description,book_image,amazon_product_url):
