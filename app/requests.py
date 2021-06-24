@@ -74,9 +74,10 @@ def search_book(book_name):
         search_book_response = json.loads(search_book_data)
 
         search_book_results = None
+        
 
-        if search_book_response['results']:
-            search_book_list = search_book_response['results']
+        if search_book_response['results']['books']:
+            search_book_list = search_book_response['results']['books']
             search_book_results = process_results(search_book_list)
 
 
